@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 # Path to your local LLaMA 7B model or Hugging Face model ID
-MODEL_PATH = "meta-llama/Meta-Llama-3.1-8B-Instruct"  # Replace with your model path or Hugging Face model ID
+MODEL_PATH = "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"  # Replace with your model path or Hugging Face model ID
 HF_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
 
 
