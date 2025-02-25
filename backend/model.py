@@ -4,11 +4,11 @@ import os
 from dotenv import load_dotenv
 
 # Path to your local LLaMA 7B model or Hugging Face model ID
-MODEL_PATH = "/path/to/llama-7b"  # Replace with your model path or Hugging Face model ID
+MODEL_PATH = "meta-llama/Meta-Llama-3.1-8B-Instruct"  # Replace with your model path or Hugging Face model ID
 HF_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
 
 
-print("Loading LLaMA 7B model... (This may take a few minutes)")
+print("Loading LLaMA 8B model... (This may take a few minutes)")
 
 # Load tokenizer and model
 tokenizer = LlamaTokenizer.from_pretrained(MODEL_PATH, use_auth_token=HF_TOKEN)
@@ -26,7 +26,7 @@ print("Model loaded successfully!")
 
 def generate_ai_response(prompt: str, max_tokens: int = 200):
     """
-    Generates AI response from the LLaMA 7B model based on the input prompt.
+    Generates AI response from the LLaMA 8B model based on the input prompt.
     """
     inputs = tokenizer(prompt, return_tensors="pt").to("cpu")  # Ensure inputs are on CPU
     with torch.no_grad():
