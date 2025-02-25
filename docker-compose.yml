@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"  # Expose FastAPI to the public
+    restart: always
+
+  discord_bot:
+    build: ./discord_bot
+    env_file:
+      - .env
+    environment:
+      - API_URL=${API_URL}
+      - DISCORD_BOT_TOKEN=${TOKEN_DISCORD_BOT}
+    depends_on:
+      - backend
+    restart: always
