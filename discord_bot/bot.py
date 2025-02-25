@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 from discord.ext import commands
 
 # Load API URL
-API_URL = "http://localhost:8000/generate_npc"
 load_dotenv()
 TOKEN = os.getenv("TOKEN_DISCORD_BOT")
+API_URL = os.getenv("API_URL")
 
 # Set up bot
 intents = discord.Intents.all()
