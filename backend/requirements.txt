@@ -8,3 +8,4 @@ python-dotenv==1.0.1
 sentencepiece==0.2.0
 tokenizers==0.21.0
 protobuf==5.29.3
+accelerate==0.26.0
