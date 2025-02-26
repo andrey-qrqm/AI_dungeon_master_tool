@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 #from model import generate_ai_response
-from llama_test_v import generate_response
+# from llama_test_v import generate_response
 import random
 
 app = FastAPI()
@@ -38,13 +38,13 @@ class AIResponse(BaseModel):
     response: str
 
 
-@app.post("/generate_ai", response_model=AIResponse)
-async def generate_ai_text(request: AIRequest):
+#@app.post("/generate_ai", response_model=AIResponse)
+#async def generate_ai_text(request: AIRequest):
     """
     Generate AI-powered text using DeepSeek.
     """
-    ai_text = generate_response(request.prompt)
-    return AIResponse(response=ai_text)
+   # ai_text = generate_response(request.prompt)
+ #   return AIResponse(response=ai_text)
 
 
 @app.get("/generate_npc", response_model=NPCResponse)
