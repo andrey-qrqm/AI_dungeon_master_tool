@@ -17,3 +17,16 @@ services:
     depends_on:
       - backend
     restart: always
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    command: [ "ollama", "serve" ]
+
+volumes:
+  ollama_data:
