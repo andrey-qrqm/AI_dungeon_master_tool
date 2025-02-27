@@ -1,9 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-# from model import generate_ai_response
-# from llama_test_v import generate_response
-# from t5_t_v import generate_text
-import requests
+from ollama_client import generate_text
 import random
 
 import os
@@ -51,12 +48,8 @@ async def generate_ai_text(request: AIRequest):
     """
     Generate AI-powered text using Ollama.
     """
-    response = requests.post(
-        f"{OLLAMA_URL}/api/generate",
-        json={"model": "llama3.2:1b", "prompt": request.prompt, "max_tokens": request.max_tokens}
-    )
-    response_json = response.json()
-    return AIResponse(response=response_json.get("response", "No response from AI"))
+    ai_text = generate_text(request.prompt)
+    return AIResponse(response=ai_text)
 
 
 @app.get("/generate_npc", response_model=NPCResponse)
