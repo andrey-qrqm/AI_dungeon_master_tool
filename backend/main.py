@@ -52,7 +52,7 @@ async def generate_ai_text(request: AIRequest):
     return AIResponse(response=ai_text)
 
 
-@app.get("/generate_npc", response_model=NPCResponse)
+@app.post("/generate_npc", response_model=NPCResponse)
 async def generate_npc():
     npc = generate_dnd_npc()
     return NPCResponse(
