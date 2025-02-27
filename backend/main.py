@@ -1,10 +1,17 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-#from model import generate_ai_response
+# from model import generate_ai_response
 # from llama_test_v import generate_response
-from t5_t_v import generate_text
+# from t5_t_v import generate_text
+import requests
 import random
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+OLLAMA_URL = os.getenv("OLLAMA_URL")
 app = FastAPI()
 
 
@@ -42,10 +49,14 @@ class AIResponse(BaseModel):
 @app.post("/generate_ai", response_model=AIResponse)
 async def generate_ai_text(request: AIRequest):
     """
-    Generate AI-powered text using DeepSeek.
+    Generate AI-powered text using Ollama.
     """
-    ai_text = generate_text(request.prompt)
-    return AIResponse(response=ai_text)
+    response = requests.post(
+        f"{OLLAMA_URL}/api/generate",
+        json={"model": "llama3.2:1b", "prompt": request.prompt, "max_tokens": request.max_tokens}
+    )
+    response_json = response.json()
+    return AIResponse(response=response_json.get("response", "No response from AI"))
 
 
 @app.get("/generate_npc", response_model=NPCResponse)
