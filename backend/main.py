@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OLLAMA_URL = os.getenv("OLLAMA_URL")
+# OLLAMA_URL = os.getenv("OLLAMA_URL")
 app = FastAPI()
 
 
