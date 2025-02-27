@@ -1,11 +1,18 @@
 version: "3.9"
 
+networks:
+  app_network:
+    driver: bridge
+
+
 services:
   backend:
     build: ./backend
     ports:
       - "8000:8000"  # Expose FastAPI to the public
     restart: always
+    networks:
+      - app_network
 
   discord_bot:
     build: ./discord_bot
@@ -17,6 +24,9 @@ services:
     depends_on:
       - backend
     restart: always
+    networks:
+      - app_network
+
 
   ollama:
     image: ollama/ollama
@@ -27,6 +37,8 @@ services:
     volumes:
       - ollama_data:/root/.ollama
     command: ["serve"]
+    networks:
+      - app_network
 
 volumes:
   ollama_data:
