@@ -37,7 +37,7 @@ async def generate_npc(ctx):
 @bot.command()
 async def ai(ctx, *, prompt: str):
     """Generate AI-powered text from DeepSeek"""
-    response = requests.post(API_URL, json={"prompt": prompt, "max_tokens": 150})
+    response = requests.post(API_URL, json={"prompt": prompt, "max_tokens": 190})
     if response.status_code == 200:
         ai_text = response.json()["response"]
         await ctx.send(f"**AI Response:** {ai_text}")
