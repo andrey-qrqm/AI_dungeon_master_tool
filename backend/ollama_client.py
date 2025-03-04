@@ -3,14 +3,15 @@ import requests
 OLLAMA_URL = "http://ollama:11434/api/generate"  # URL inside Docker
 
 
-def generate_text(prompt):
+def generate_text(prompt, max_tokens):
     """
     Send a request to the Ollama server and return the generated text.
     """
     payload = {
         "model": "llama3.2:1b",  # Ensure this model is downloaded
         "prompt": prompt,
-        "stream": False  # Use streaming if needed
+        "stream": False, # Use streaming if needed
+        "max_tokens": max_tokens
     }
 
     try:

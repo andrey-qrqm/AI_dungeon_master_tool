@@ -48,7 +48,7 @@ async def generate_ai_text(request: AIRequest):
     """
     Generate AI-powered text using Ollama.
     """
-    ai_text = generate_text(request.prompt)
+    ai_text = generate_text(request.prompt, request.max_tokens)
     return AIResponse(response=ai_text)
 
 
