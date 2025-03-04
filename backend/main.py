@@ -35,7 +35,7 @@ class NPCResponse(BaseModel):
 
 class AIRequest(BaseModel):
     prompt: str
-    max_tokens: int = 200  # Default token limit
+    max_tokens: int = 190  # Default token limit
 
 
 # Response Model
