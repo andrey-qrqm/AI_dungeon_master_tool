@@ -36,7 +36,8 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-    entrypoint: ["/bin/sh", "-c", "ollama serve & wait"]
+      - ./backend/Modelfile.md:/root/Modelfile.md  # Mount Modelfile
+    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 5 && ollama create custom_m -f /root/Modelfile.md && ollama run custom_m"]
     networks:
       - app_network
 
