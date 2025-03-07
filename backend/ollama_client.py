@@ -8,7 +8,7 @@ def generate_text(prompt, max_tokens):
     Send a request to the Ollama server and return the generated text.
     """
     payload = {
-        "model": "llama3.2:1b",  # Ensure this model is downloaded
+        "model": "custom_m",  # Ensure this model is downloaded
         "prompt": prompt,
         "stream": False, # Use streaming if needed
         "max_tokens": max_tokens

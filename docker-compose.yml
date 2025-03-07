@@ -36,7 +36,7 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 10"]
+    entrypoint: ["/bin/sh", "-c", "ollama serve & wait"]
     networks:
       - app_network
 
