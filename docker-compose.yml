@@ -40,7 +40,7 @@ services:
     entrypoint: [
       "/bin/sh",
       "-c",
-      "ollama create custom_m -f /root/Modelfile.md && ollama run custom_m"]
+      "ollama serve && ollama create custom_m -f /root/Modelfile.md && ollama run custom_m"]
     networks:
       - app_network
 
